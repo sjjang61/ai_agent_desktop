@@ -1,0 +1,19 @@
+{
+  "name": "ai-agent-desktop",
+  "version": "0.1.0",
+  "private": true,
+  "description": "AI Agent Platform 데스크톱 셸 (내장 브라우저 + 에이전트 자동화)",
+  "main": "dist/main.js",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "npm run build && env -u ELECTRON_RUN_AS_NODE electron .",
+    "start": "env -u ELECTRON_RUN_AS_NODE electron .",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "test": "npm run build && node --test test/chrome-cookies.test.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "electron": "^33.0.0",
+    "typescript": "^5.6.0"
+  }
+}
