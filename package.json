@@ -9,11 +9,37 @@
     "dev": "npm run build && env -u ELECTRON_RUN_AS_NODE electron .",
     "start": "env -u ELECTRON_RUN_AS_NODE electron .",
     "typecheck": "tsc --noEmit -p tsconfig.json",
-    "test": "npm run build && node --test test/chrome-cookies.test.mjs"
+    "test": "npm run build && node --test test/chrome-cookies.test.mjs",
+    "dist:mac": "npm run build && electron-builder --mac dmg"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",
     "electron": "^33.0.0",
+    "electron-builder": "^26.18.0",
     "typescript": "^5.6.0"
+  },
+  "author": "hyungkeun.song",
+  "build": {
+    "appId": "com.aiagent.desktop",
+    "productName": "AI Agent Desktop",
+    "files": [
+      "dist/**/*",
+      "package.json"
+    ],
+    "directories": {
+      "output": "release"
+    },
+    "mac": {
+      "category": "public.app-category.productivity",
+      "identity": null,
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "arm64"
+          ]
+        }
+      ]
+    }
   }
 }
